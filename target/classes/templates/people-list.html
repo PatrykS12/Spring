@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>People List</title>
+</head>
+<body>
+<h1>People List</h1>
+<table border="1">
+    <thead>
+    <tr>
+        <th>Index</th>
+        <th>First Name</th>
+        <th>Family Name</th>
+        <th>Details</th>
+    </tr>
+    </thead>
+    <tbody>
+    <!-- Iteracja po liście "people" przekazanej z kontrolera -->
+    <tr th:each="person, stat : ${people}">
+        <!-- Używamy 'stat.index' jako indeksu na liście (od 0 do n-1) -->
+        <td th:text="${stat.index}">0</td>
+        <td th:text="${person.firstName}">Szymon</td>
+        <td th:text="${person.familyName}">Sroka</td>
+        <td>
+            <!-- Generowanie linku, gdzie {index} to stat.index -->
+            <a th:href="@{/people/{index}(index=${stat.index})}">Details</a>
+        </td>
+    </tr>
+    </tbody>
+
+</table>
+<a href="/">Back</a>
+<a href="/people/add">Add new person</a>
+</body>
+</html>

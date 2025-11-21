@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Person</title>
+</head>
+<body>
+<h1>Add new person</h1>
+
+<!-- Formularz POST wysyła dane z powrotem na ścieżkę /people/add -->
+<form action="#" th:action="@{/people/add}" th:object="${person}" method="POST">
+    <p>
+        <label for="firstName">First Name:</label>
+        <!-- th:field wiąże pole formularza z polem firstName obiektu person -->
+        <input type="text" id="firstName" th:field="*{firstName}" required>
+    </p>
+    <p>
+        <label for="familyName">Family Name:</label>
+        <input type="text" id="familyName" th:field="*{familyName}" required>
+    </p>
+    <p>
+        <button type="submit">Save</button>
+    </p>
+</form>
+
+<a href="/people">Back</a>
+</body>
+</html>
